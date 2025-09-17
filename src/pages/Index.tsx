@@ -6,7 +6,6 @@ import ProductsSection from "@/components/sections/ProductsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CallToActionSection from "@/components/sections/CallToActionSection";
 import ContactFooter from "@/components/sections/ContactFooter";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import { CartItem } from "@/components/ShoppingCart";
 import { Product, products } from "@/data/products";
 
@@ -54,7 +53,6 @@ const Index = () => {
       </div>
 
       <ContactFooter />
-      <WhatsAppButton />
     </div>
   );
 };

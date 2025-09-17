@@ -3,7 +3,6 @@ import Navigation from "@/components/Navigation";
 import ProductCard from "@/components/ProductCard";
 import { Product, products } from "@/data/products";
 import { CartItem } from "@/components/ShoppingCart";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import SearchBar from "@/components/SearchBar";
 import PromoCode from "@/components/PromoCode";
 import { ArrowLeft } from "lucide-react";
@@ -129,7 +128,6 @@ const Products = () => {
         )}
       </div>
 
-      <WhatsAppButton />
     </div>
   );
 };

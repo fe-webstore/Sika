@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Star, Leaf, Heart, Clock, ShoppingCart } from "lucide-react";
@@ -153,7 +152,6 @@ const ProductDetail = () => {
         </div>
       </div>
 
-      <WhatsAppButton />
     </div>
   );
 };

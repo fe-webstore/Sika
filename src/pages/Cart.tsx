@@ -2,18 +2,16 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { ArrowLeft, ShoppingCart as CartIcon, Minus, Plus, Trash2, MessageCircle, Phone } from "lucide-react";
+import { ArrowLeft, ShoppingCart as CartIcon, Minus, Plus, Trash2, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CartItem } from "@/components/ShoppingCart";
 import PromoCode from "@/components/PromoCode";
+import CustomerForm from "@/components/CustomerForm";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [customerName, setCustomerName] = useState("");
   const [appliedPromo, setAppliedPromo] = useState<{ code: string; discount: number } | undefined>();
 
   useEffect(() => {
@@ -67,48 +65,6 @@ const Cart = () => {
     localStorage.removeItem('appliedPromo');
   };
 
-  const handleWhatsAppOrder = () => {
-    if (!customerName.trim()) {
-      alert("Veuillez entrer votre nom");
-      return;
-    }
-
-    if (cartItems.length === 0) {
-      alert("Votre panier est vide");
-      return;
-    }
-
-    const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const discountAmount = appliedPromo ? (subtotal * appliedPromo.discount) / 100 : 0;
-    const total = subtotal - discountAmount;
-    
-    const productList = cartItems.map(item => 
-      `• ${item.name} (x${item.quantity}) - ${(item.price * item.quantity).toFixed(0)} FCFA`
-    ).join('\n');
-
-    let message = `Bonjour Sika ! 🌿✨
-
-Je suis ${customerName} et je souhaiterais commander :
-
-${productList}
-
-💰 Sous-total : ${subtotal.toFixed(0)} FCFA`;
-
-    if (appliedPromo) {
-      message += `\n🎟️ Code promo : ${appliedPromo.code} (-${appliedPromo.discount}%)
-💸 Réduction : -${discountAmount.toFixed(0)} FCFA`;
-    }
-
-    message += `\n💰 Total : ${total.toFixed(0)} FCFA
-
-Merci pour vos magnifiques produits de beauté naturels ! 💄🌺`;
-
-    const whatsappNumber = "22901229";
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-    
-    window.open(whatsappUrl, '_blank');
-  };
 
   const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const discountAmount = appliedPromo ? (subtotal * appliedPromo.discount) / 100 : 0;
@@ -261,45 +217,7 @@ Merci pour vos magnifiques produits de beauté naturels ! 💄🌺`;
             </Card>
 
             {/* Customer Form */}
-            <Card className="border-glass-200 shadow-lg bg-white/90 backdrop-blur-sm rounded-2xl">
-              <CardHeader className="pb-2 md:pb-4">
-                <CardTitle className="flex items-center gap-2 text-glass-700 text-lg md:text-xl">
-                  <MessageCircle className="w-4 h-4 md:w-5 md:h-5 text-glass-600" />
-                  Finaliser ma Commande
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3 md:space-y-4 px-3 md:px-6">
-                <div>
-                  <Label htmlFor="customerName" className="text-glass-600 text-sm md:text-base">Votre nom complet</Label>
-                  <Input
-                    id="customerName"
-                    type="text"
-                    placeholder="Entrez votre nom..."
-                    value={customerName}
-                    onChange={(e) => setCustomerName(e.target.value)}
-                    className="mt-1 rounded-xl border-glass-200 focus:border-glass-400 text-sm md:text-base"
-                  />
-                </div>
-                
-                <div className="bg-gradient-to-r from-glass-50 to-nature-50 p-3 md:p-4 rounded-xl border border-glass-200">
-                  <div className="flex items-center gap-2 text-glass-600 mb-2">
-                    <Phone className="w-3 h-3 md:w-4 md:h-4" />
-                    <span className="font-bold text-sm md:text-base">Contact Sika</span>
-                  </div>
-                  <p className="text-xs md:text-sm text-glass-600">📞 +229 01-229</p>
-                  <p className="text-xs md:text-sm text-glass-600">📍 Calavi, Bénin</p>
-                </div>
-
-                <Button
-                  onClick={handleWhatsAppOrder}
-                  disabled={!customerName.trim() || cartItems.length === 0}
-                  className="w-full bg-glass-500 hover:bg-glass-600 text-white text-sm md:text-lg py-4 md:py-6 rounded-xl transition-all duration-300 hover:scale-105"
-                >
-                  <MessageCircle className="w-4 h-4 md:w-5 md:h-5 mr-2" />
-                  Commander via WhatsApp
-                </Button>
-              </CardContent>
-            </Card>
+            <CustomerForm cartItems={cartItems} />
           </div>
         </div>
       </div>
