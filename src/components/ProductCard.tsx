@@ -62,17 +62,6 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
             </span>
           </div>
 
-          <div className="flex items-center mt-4">
-            <img 
-              src="https://i.pinimg.com/736x/22/fa/36/22fa36e64604120916edcff694497994.jpg"
-              alt="Sika"
-              className="w-10 h-10 rounded-full border-2 border-green-300 mr-3"
-            />
-            <div>
-              <p className="font-bold text-sm">Sika</p>
-              <p className="text-xs text-gray-500">Experte en Beauté</p>
-            </div>
-          </div>
         </div>
         <div className="px-6 pb-4">
           <button

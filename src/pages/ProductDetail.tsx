@@ -136,18 +136,6 @@ const ProductDetail = () => {
               </Button>
             </div>
 
-            <div className="flex items-center mt-6 p-4 bg-gradient-to-r from-green-50 to-white rounded-xl">
-              <img 
-                src="https://i.pinimg.com/736x/22/fa/36/22fa36e64604120916edcff694497994.jpg"
-                alt="Sika"
-                className="w-12 h-12 rounded-full border-2 border-green-300 mr-4"
-              />
-              <div>
-                <p className="font-bold">Sika Beauty</p>
-                <p className="text-sm text-gray-600">Experte en Beauté Naturelle</p>
-                <p className="text-xs text-green-600">Conseils personnalisés disponibles</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
