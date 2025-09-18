@@ -7,7 +7,7 @@ const ContactFooter = () => {
       <div className="container mx-auto px-4 text-center">
         <div className="mb-6">
           <h3 className="text-3xl font-bold mb-2" style={{fontFamily: "'Short Stack', cursive"}}>
-            SIKE BEAUTY 🌸
+            nulla-eta 🌸
           </h3>
           <p className="text-green-100">Votre beauté naturelle, notre passion</p>
         </div>
@@ -33,7 +33,7 @@ const ContactFooter = () => {
         </div>
 
         <div className="mt-8 pt-6 border-t border-green-300">
-          <p className="text-green-100">© 2024 Sike Beauty & soft beauty - Tous droits réservés</p>
+          <p className="text-green-100">© 2024 nulla-eta & soft beauty - Tous droits réservés</p>
         </div>
       </div>
     </footer>
