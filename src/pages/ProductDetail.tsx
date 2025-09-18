@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Star, Leaf, Heart, Clock, ShoppingCart } from "lucide-react";
+import { ArrowLeft, Star, Leaf, Heart, Clock, ShoppingCart, MessageCircle, Users, Sparkles, CheckCircle } from "lucide-react";
 import { CartItem } from "@/components/ShoppingCart";
 import { products, Product } from "@/data/products";
 import { useToast } from "@/hooks/use-toast";
@@ -94,6 +94,70 @@ const ProductDetail = () => {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">Description</h3>
               <p className="text-gray-700 leading-relaxed">{product.description}</p>
+            </div>
+
+            {/* Avis Clients */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold">Avis Clients 💬</h3>
+              <div className="space-y-4">
+                <div className="bg-gradient-to-r from-pink-50 to-purple-50 p-4 rounded-xl border border-pink-200">
+                  <div className="flex items-center mb-2">
+                    <div className="flex text-yellow-500 mr-2">
+                      {[1,2,3,4,5].map(i => (
+                        <Star key={i} className="w-4 h-4 fill-current" />
+                      ))}
+                    </div>
+                    <span className="text-sm text-gray-600">Fatou K. - Il y a 2 jours</span>
+                  </div>
+                  <p className="text-gray-700 italic">
+                    "J'ai commencé à l'utiliser le matin et ça marchait un peu, mais quand j'ai commencé à l'utiliser le soir aussi, les résultats ont doublé ! Ma peau n'a jamais été aussi éclatante. Je recommande vraiment d'utiliser ce produit matin et soir pour des résultats optimaux."
+                  </p>
+                </div>
+                
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-xl border border-green-200">
+                  <div className="flex items-center mb-2">
+                    <div className="flex text-yellow-500 mr-2">
+                      {[1,2,3,4,5].map(i => (
+                        <Star key={i} className="w-4 h-4 fill-current" />
+                      ))}
+                    </div>
+                    <span className="text-sm text-gray-600">Aïcha M. - Il y a 1 semaine</span>
+                  </div>
+                  <p className="text-gray-700 italic">
+                    "Au début j'étais sceptique, mais après 3 jours d'utilisation matin et soir, je vois déjà une différence ! Ma peau est plus douce et les imperfections commencent à disparaître. Le secret c'est vraiment la régularité - matin ET soir pour des résultats visibles rapidement."
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Section d'Accompagnement Personnalisé */}
+            <div className="bg-gradient-to-r from-purple-50 via-pink-50 to-rose-50 p-6 rounded-2xl border border-purple-200">
+              <div className="flex items-start gap-4">
+                <div className="bg-purple-100 p-3 rounded-full">
+                  <Users className="w-6 h-6 text-purple-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-purple-800 mb-2 flex items-center gap-2">
+                    <Sparkles className="w-5 h-5" />
+                    Accompagnement Personnalisé
+                  </h3>
+                  <p className="text-purple-700 mb-3">
+                    Après votre première commande, une assistante personnelle restera en contact avec vous pour vous accompagner et vous expliquer en détail comment obtenir les meilleurs résultats en peu de temps possible.
+                  </p>
+                  <div className="flex items-center gap-2 text-sm text-purple-600">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Conseils personnalisés selon votre type de peau</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-purple-600 mt-1">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Suivi de vos progrès et ajustements</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-purple-600 mt-1">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Réponses à toutes vos questions beauté</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="flex flex-wrap gap-2">

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { ArrowLeft, ShoppingCart as CartIcon, Minus, Plus, Trash2, Phone } from "lucide-react";
+import { ArrowLeft, ShoppingCart as CartIcon, Minus, Plus, Trash2, Phone, MessageCircle, Users, Sparkles, CheckCircle, Palette } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CartItem } from "@/components/ShoppingCart";
 import PromoCode from "@/components/PromoCode";
@@ -218,6 +218,44 @@ const Cart = () => {
 
             {/* Customer Form */}
             <CustomerForm cartItems={cartItems} />
+
+            {/* Section d'Accompagnement Personnalisé */}
+            <Card className="border-purple-200 shadow-lg bg-gradient-to-r from-purple-50 via-pink-50 to-rose-50 rounded-2xl">
+              <CardContent className="p-4 md:p-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-purple-100 p-3 rounded-full">
+                    <Users className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-purple-800 mb-2 flex items-center gap-2">
+                      <Sparkles className="w-5 h-5" />
+                      Accompagnement Personnalisé
+                    </h3>
+                    <p className="text-purple-700 mb-3 text-sm md:text-base">
+                      Après votre commande, une assistante personnelle restera en contact avec vous pour vous accompagner et vous expliquer en détail comment obtenir les meilleurs résultats en peu de temps possible.
+                    </p>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-sm text-purple-600">
+                        <CheckCircle className="w-4 h-4" />
+                        <span>Conseils personnalisés selon votre type de peau</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-purple-600">
+                        <CheckCircle className="w-4 h-4" />
+                        <span>Suivi de vos progrès et ajustements</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-purple-600">
+                        <CheckCircle className="w-4 h-4" />
+                        <span>Réponses à toutes vos questions beauté</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-purple-600">
+                        <Palette className="w-4 h-4" />
+                        <span>Idées d'ensemble selon votre style</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
