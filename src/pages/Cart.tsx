@@ -72,13 +72,13 @@ const Cart = () => {
   const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-glass-50 via-white to-nature-50">
+    <div className="min-h-screen bg-gradient-to-br from-glass-50 via-white to-slate-50">
       {/* Animation 3D Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="floating-heart absolute top-4 left-4 md:top-10 md:left-10 text-xl md:text-2xl text-pink-300 opacity-60">💖</div>
+        <div className="floating-heart absolute top-4 left-4 md:top-10 md:left-10 text-xl md:text-2xl text-glass-300 opacity-60">💖</div>
         <div className="floating-star absolute top-8 right-4 md:top-20 md:right-20 text-lg md:text-xl text-glass-300 opacity-60">⭐</div>
-        <div className="floating-sparkle absolute bottom-16 left-4 md:bottom-20 md:left-20 text-base md:text-lg text-nature-300 opacity-60">✨</div>
-        <div className="floating-flower absolute bottom-4 right-4 md:bottom-10 md:right-10 text-xl md:text-2xl text-purple-300 opacity-60">🌸</div>
+        <div className="floating-sparkle absolute bottom-16 left-4 md:bottom-20 md:left-20 text-base md:text-lg text-glass-300 opacity-60">✨</div>
+        <div className="floating-flower absolute bottom-4 right-4 md:bottom-10 md:right-10 text-xl md:text-2xl text-glass-300 opacity-60">🌸</div>
       </div>
 
       <div className="container mx-auto px-2 md:px-4 py-4 md:py-8 relative z-10">
@@ -123,7 +123,7 @@ const Cart = () => {
                 ) : (
                   <div className="space-y-3 md:space-y-4">
                     {cartItems.map((item) => (
-                      <div key={item.id} className="flex items-center gap-2 md:gap-4 p-3 md:p-4 bg-gradient-to-r from-glass-50 to-nature-50 rounded-xl border border-glass-200">
+                      <div key={item.id} className="flex items-center gap-2 md:gap-4 p-3 md:p-4 bg-gradient-to-r from-glass-50 to-slate-50 rounded-xl border border-glass-200">
                         <img
                           src={item.image}
                           alt={item.name}
@@ -136,7 +136,7 @@ const Cart = () => {
                           <p className="text-glass-600 font-semibold text-sm md:text-lg">
                             {item.price.toFixed(0)} FCFA
                           </p>
-                          <span className="inline-block mt-1 md:mt-2 px-2 py-1 bg-nature-100 text-nature-700 rounded-full text-xs border border-nature-200">
+                          <span className="inline-block mt-1 md:mt-2 px-2 py-1 bg-slate-100 text-slate-700 rounded-full text-xs border border-slate-200">
                             {item.category}
                           </span>
                         </div>
@@ -164,7 +164,7 @@ const Cart = () => {
                             size="sm"
                             variant="outline"
                             onClick={() => removeItem(item.id)}
-                            className="h-6 w-6 md:h-8 md:w-8 p-0 mt-1 md:mt-0 md:ml-2 text-red-500 hover:text-red-700 rounded-full border-red-300 hover:bg-red-50"
+                            className="h-6 w-6 md:h-8 md:w-8 p-0 mt-1 md:mt-0 md:ml-2 text-slate-600 hover:text-slate-800 rounded-full border-slate-300 hover:bg-slate-50"
                           >
                             <Trash2 className="w-2 h-2 md:w-3 md:h-3" />
                           </Button>

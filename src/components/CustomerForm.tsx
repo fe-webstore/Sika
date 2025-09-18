@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -16,6 +17,9 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>("idle");
+  const [priorityPosition, setPriorityPosition] = useState<number | null>(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const navigate = useNavigate();
 
   const GOOGLE_SHEETS_WEBAPP_URL = (import.meta as any)?.env?.VITE_GOOGLE_SHEETS_WEBAPP_URL || "https://script.google.com/macros/s/AKfycbzPtbBeHVTIfNWgK1tiTEiq1cPY6_sPfc2JyLed1tpYAChBXjiymO29teHp1q0DLos/exec";
 
@@ -84,7 +88,7 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
       // In no-cors mode, response is opaque; treat as success if no network error occurred
       setStatus('success');
 
-      // Persist order locally for the admin page
+      // Persist order locally for the admin page and compute priority position
       try {
         const existing = JSON.parse(localStorage.getItem('sikaOrders') || '[]');
         const newOrder = {
@@ -97,7 +101,11 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
           timestamp: new Date().toISOString(),
         };
         localStorage.setItem('sikaOrders', JSON.stringify([newOrder, ...existing]));
+        setPriorityPosition((existing?.length || 0) + 1);
       } catch {}
+
+      // Open success modal (user will confirm to continue)
+      setShowSuccessModal(true);
     } catch (error) {
       console.error(error);
       setStatus('error');
@@ -107,27 +115,27 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
   };
 
   return (
-    <Card className="glass-card">
+    <Card className="cute-card">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-glass-700">
+        <CardTitle className="flex items-center gap-2 text-slate-800">
           <ShoppingCart className="w-5 h-5" />
           Finaliser ma commande
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <Label htmlFor="customerName" className="text-gray-700">Votre nom complet</Label>
+          <Label htmlFor="customerName" className="text-slate-800">Votre nom complet</Label>
           <Input
             id="customerName"
             type="text"
             placeholder="Entrez votre nom..."
             value={customerName}
             onChange={(e) => setCustomerName(e.target.value)}
-            className="mt-1 bg-white/50 border-glass-200"
+            className="mt-1 bg-white border-slate-300 focus:border-slate-400 focus:ring-0 text-slate-900 placeholder:text-slate-500"
           />
         </div>
         <div>
-          <Label htmlFor="phoneNumber" className="text-gray-700">Votre numéro de téléphone</Label>
+          <Label htmlFor="phoneNumber" className="text-slate-800">Votre numéro de téléphone</Label>
           <Input
             id="phoneNumber"
             type="tel"
@@ -135,44 +143,66 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
             placeholder="Ex: 229 01 23 45 67"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
-            className="mt-1 bg-white/50 border-glass-200"
+            className="mt-1 bg-white border-slate-300 focus:border-slate-400 focus:ring-0 text-slate-900 placeholder:text-slate-500"
           />
         </div>
         
-        <div className="bg-glass-50 p-3 rounded-lg">
-          <div className="flex items-center gap-2 text-glass-600 mb-2">
+        <div className="bg-slate-50 p-3 rounded-lg">
+          <div className="flex items-center gap-2 text-slate-700 mb-2">
             <Phone className="w-4 h-4" />
             <span className="font-medium">Contact Sika</span>
           </div>
-          <p className="text-sm text-gray-600">📞 229 01 22 90</p>
-          <p className="text-sm text-gray-600">📍 Calavi,Bénin</p>
+          <p className="text-sm text-slate-700">📞 229 01 22 90</p>
+          <p className="text-sm text-slate-700">📍 Calavi,Bénin</p>
         </div>
 
         <Button
           onClick={handleSubmitOrder}
           disabled={isSubmitting || !customerName.trim() || !phoneNumber.trim() || cartItems.length === 0}
-          className="w-full glass-button text-lg py-6"
+          className="w-full pink-btn text-lg py-6"
         >
           <ShoppingCart className="w-5 h-5 mr-2" />
           {isSubmitting ? "Envoi en cours..." : "Commander"}
         </Button>
 
         {isSubmitting && (
-          <div className="flex items-center justify-center mt-2 text-sm text-glass-600">
+          <div className="flex items-center justify-center mt-2 text-sm text-slate-700">
             <Loader2 className="w-4 h-4 mr-2 animate-spin" />
             Envoi en cours...
           </div>
         )}
 
-        {!isSubmitting && status === 'success' && (
-          <div className="flex items-center justify-center mt-2 text-sm text-green-600">
-            <CheckCircle2 className="w-4 h-4 mr-2" />
-            Commande enregistrée avec succès.
+        {/* Success Modal */}
+        {showSuccessModal && status === 'success' && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
+            <div className="absolute inset-0 bg-black/50" />
+            <div className="relative mx-4 max-w-md w-full bg-white rounded-2xl shadow-xl p-6 text-center">
+              <div className="mx-auto mb-3 grid place-items-center w-12 h-12 rounded-full bg-green-100">
+                <CheckCircle2 className="w-7 h-7 text-green-600" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900" style={{fontFamily: "'Short Stack', cursive"}}>
+                Commande confirmée
+              </h3>
+              <div className="mt-3 text-slate-700 space-y-2">
+                <p>Merci {customerName || ''} ! Votre commande a bien été enregistrée.</p>
+                {priorityPosition !== null && (
+                  <p>
+                    Vous passez en <span className="font-semibold text-green-700">priorité n° {priorityPosition}</span>.
+                    Nous accélérons votre traitement et vous serez contacté très bientôt.
+                  </p>
+                )}
+              </div>
+              <div className="mt-5">
+                <Button className="pink-btn w-full" onClick={() => navigate('/products')}>
+                  OK, voir les produits
+                </Button>
+              </div>
+            </div>
           </div>
         )}
 
         {!isSubmitting && status === 'error' && (
-          <div className="flex items-center justify-center mt-2 text-sm text-red-600">
+          <div className="flex items-center justify-center mt-2 text-sm text-slate-800">
             <XCircle className="w-4 h-4 mr-2" />
             Impossible d'enregistrer la commande. Réessayez.
           </div>

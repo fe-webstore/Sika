@@ -105,7 +105,7 @@ const PromoCode = ({ onApplyPromo, appliedPromo, onRemovePromo }: PromoCodeProps
               </Button>
             </div>
             {error && (
-              <p className="text-red-500 text-sm flex items-center gap-1">
+              <p className="text-slate-800 text-sm flex items-center gap-1">
                 <X className="w-3 h-3" />
                 {error}
               </p>

@@ -63,8 +63,8 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Couleurs personnalisées pour Sika
-				glass: {
+                // Couleurs personnalisées pour Sika (greens only, no yellow)
+                glass: {
 					50: '#f0fdf4',
 					100: '#dcfce7',
 					200: '#bbf7d0',
@@ -76,18 +76,7 @@ export default {
 					800: '#166534',
 					900: '#14532d'
 				},
-				nature: {
-					50: '#f7fee7',
-					100: '#ecfccb',
-					200: '#d9f99d',
-					300: '#bef264',
-					400: '#a3e635',
-					500: '#84cc16',
-					600: '#65a30d',
-					700: '#4d7c0f',
-					800: '#3f6212',
-					900: '#365314'
-				}
+                // Removed yellowish nature palette
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

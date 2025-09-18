@@ -88,7 +88,7 @@ const Admin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-glass-50 via-white to-nature-50 p-4 md:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-glass-50 via-white to-slate-50 p-4 md:p-8">
       <div className="container mx-auto max-w-5xl">
         <h1 className="text-2xl md:text-3xl font-bold text-glass-700 mb-6">Admin - Commandes</h1>
 
@@ -120,7 +120,7 @@ const Admin = () => {
             const f = e.target.files?.[0];
             if (f) importOrders(f);
           }} />
-          <Button variant="outline" onClick={clearLocal} className="border-red-300 text-red-600 hover:bg-red-50">Vider commandes locales</Button>
+          <Button variant="outline" onClick={clearLocal} className="border-slate-300 text-slate-700 hover:bg-slate-50">Vider commandes locales</Button>
         </div>
 
         <Card>
@@ -151,7 +151,7 @@ const Admin = () => {
                       ))}
                     </div>
                     <div className="mt-3 flex justify-end">
-                      <Button variant="outline" onClick={() => deleteOrder(order.id)} className="border-red-300 text-red-600 hover:bg-red-50">Supprimer</Button>
+                      <Button variant="outline" onClick={() => deleteOrder(order.id)} className="border-slate-300 text-slate-700 hover:bg-slate-50">Supprimer</Button>
                     </div>
                   </div>
                 ))}
@@ -171,7 +171,7 @@ const Admin = () => {
             ) : (
               <div className="space-y-4">
                 {repoOrders.map((order, idx) => (
-                  <div key={order.id ?? idx} className="p-4 rounded-lg border border-nature-200 bg-nature-50/70">
+                  <div key={order.id ?? idx} className="p-4 rounded-lg border border-slate-200 bg-slate-50">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                       <div>
                         <p className="font-semibold text-glass-700">{order.name} • {order.phone}</p>

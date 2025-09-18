@@ -81,7 +81,7 @@ const MobileMenu = ({ cartItemCount }: MobileMenuProps) => {
                     <ShoppingCart className="w-5 h-5 mr-3 text-green-600" />
                     <span className="text-lg">Panier</span>
                     {cartItemCount > 0 && (
-                      <span className="absolute right-4 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">
+                      <span className="absolute right-4 bg-slate-900 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">
                         {cartItemCount}
                       </span>
                     )}

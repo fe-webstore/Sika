@@ -83,7 +83,7 @@ const Products = () => {
           </Link>
           <div className="flex-1">
             <h1 className="text-3xl font-bold mb-2" style={{fontFamily: "'Short Stack', cursive"}}>
-              Tous nos Produits ✨
+              Tous nos Produits
             </h1>
             <p className="text-gray-600">Découvrez toute notre collection de beauté naturelle</p>
           </div>

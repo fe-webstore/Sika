@@ -41,7 +41,7 @@ const Navigation = ({ cartItemCount }: NavigationProps) => {
                 <ShoppingCart className="w-5 h-5 mr-2" />
                 <span className="hidden sm:inline">Panier</span>
                 {cartItemCount > 0 && (
-                  <Badge className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 p-0 flex items-center justify-center text-xs">
+                  <Badge className="absolute -top-2 -right-2 bg-slate-900 text-white rounded-full w-6 h-6 p-0 flex items-center justify-center text-xs">
                     {cartItemCount}
                   </Badge>
                 )}
@@ -55,7 +55,7 @@ const Navigation = ({ cartItemCount }: NavigationProps) => {
               <Button className="pink-btn relative p-2">
                 <ShoppingCart className="w-5 h-5" />
                 {cartItemCount > 0 && (
-                  <Badge className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 p-0 flex items-center justify-center text-xs">
+                  <Badge className="absolute -top-2 -right-2 bg-slate-900 text-white rounded-full w-5 h-5 p-0 flex items-center justify-center text-xs">
                     {cartItemCount}
                   </Badge>
                 )}

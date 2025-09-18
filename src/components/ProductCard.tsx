@@ -40,7 +40,7 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
             <h3 className="text-xl font-bold hover:text-green-600 transition-colors" style={{fontFamily: "'Short Stack', cursive"}}>
               {product.name} 💄
             </h3>
-            <div className="flex items-center text-yellow-400">
+            <div className="flex items-center text-green-500">
               <Star className="w-4 h-4 fill-current" />
               <span className="ml-1 text-gray-700">4.8</span>
             </div>

@@ -78,7 +78,7 @@ const ProductDetail = () => {
               </h1>
               
               <div className="flex items-center mb-4">
-                <div className="flex text-yellow-400 mr-2">
+                <div className="flex text-green-500 mr-2">
                   {[1,2,3,4,5].map(i => (
                     <Star key={i} className="w-5 h-5 fill-current" />
                   ))}
@@ -136,7 +136,7 @@ const ProductDetail = () => {
               </Button>
             </div>
 
-            <div className="flex items-center mt-6 p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl">
+            <div className="flex items-center mt-6 p-4 bg-gradient-to-r from-green-50 to-white rounded-xl">
               <img 
                 src="https://i.pinimg.com/736x/22/fa/36/22fa36e64604120916edcff694497994.jpg"
                 alt="Sika"

@@ -69,7 +69,7 @@ const ShoppingCart = ({ items, onUpdateQuantity, onRemoveItem }: ShoppingCartPro
                     size="sm"
                     variant="outline"
                     onClick={() => onRemoveItem(item.id)}
-                    className="h-8 w-8 p-0 ml-1 text-red-500 hover:text-red-700"
+                    className="h-8 w-8 p-0 ml-1 text-slate-700 hover:text-slate-900"
                   >
                     <Trash2 className="w-3 h-3" />
                   </Button>
