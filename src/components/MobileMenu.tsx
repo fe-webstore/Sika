@@ -42,7 +42,7 @@ const MobileMenu = ({ cartItemCount }: MobileMenuProps) => {
           {/* Menu Content */}
           <div className="fixed top-0 right-0 h-full w-80 bg-white shadow-lg transform transition-transform duration-300 ease-in-out">
             <div className="flex items-center justify-between p-4 border-b">
-              <h2 className="text-xl font-bold text-green-600" style={{fontFamily: "'Short Stack', cursive"}}>
+              <h2 className="text-xl font-bold text-green-600">
                 Menu
               </h2>
               <Button variant="ghost" onClick={closeMenu}>

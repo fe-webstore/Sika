@@ -16,7 +16,7 @@ const Navigation = ({ cartItemCount }: NavigationProps) => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <h1 className="text-2xl font-bold text-green-600" style={{fontFamily: "'Short Stack', cursive"}}>
+            <h1 className="text-2xl font-bold text-green-600">
             nulla-eta 🌸
             </h1>
           </Link>

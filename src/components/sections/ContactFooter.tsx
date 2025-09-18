@@ -6,7 +6,7 @@ const ContactFooter = () => {
     <footer id="contact" className="contact-section py-12 bg-white">
       <div className="container mx-auto px-4 text-center">
         <div className="mb-6">
-          <h3 className="text-3xl font-bold mb-2 text-slate-900" style={{fontFamily: "'Short Stack', cursive"}}>
+          <h3 className="text-3xl font-bold mb-2 text-slate-900">
             nulla-eta 🌸
           </h3>
           <p className="text-slate-600">Votre beauté naturelle, notre passion</p>

@@ -7,7 +7,7 @@ const Header = () => {
       <div className="absolute top-0 right-0 w-full h-full cute-dots"></div>
       <div className="relative z-10 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-8 md:mb-0">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{fontFamily: "'Short Stack', cursive"}}>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Découvrez la <span className="text-green-600">Beauté Naturelle</span> avec Soft beauty! 🌸
           </h2>
           <p className="text-xl mb-6 text-gray-700">

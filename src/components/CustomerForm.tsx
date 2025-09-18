@@ -190,7 +190,7 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
               <div className="mx-auto mb-3 grid place-items-center w-12 h-12 rounded-full bg-green-100">
                 <CheckCircle2 className="w-7 h-7 text-green-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900" style={{fontFamily: "'Short Stack', cursive"}}>
+              <h3 className="text-xl font-bold text-slate-900">
                 Commande confirmée
               </h3>
               <div className="mt-3 text-slate-700 space-y-2">

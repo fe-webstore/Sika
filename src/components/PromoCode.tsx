@@ -60,7 +60,7 @@ const PromoCode = ({ onApplyPromo, appliedPromo, onRemovePromo }: PromoCodeProps
   return (
     <Card className="cute-card">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2" style={{fontFamily: "'Short Stack', cursive"}}>
+        <CardTitle className="flex items-center gap-2">
           <Tag className="w-5 h-5" />
           Code Promo
         </CardTitle>

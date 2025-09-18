@@ -31,7 +31,7 @@ const TestimonialsSection = () => {
 
   return (
     <section className="mb-16">
-      <h2 className="text-3xl font-bold mb-8 text-center" style={{fontFamily: "'Short Stack', cursive"}}>
+      <h2 className="text-3xl font-bold mb-8 text-center">
         Ce que disent nos <span className="cute-underline">Clients Adorables</span> 💖
       </h2>
 

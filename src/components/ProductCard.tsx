@@ -37,7 +37,7 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
         />
         <div className="p-6 flex-grow">
           <div className="flex justify-between items-start mb-3">
-            <h3 className="text-xl font-bold hover:text-green-600 transition-colors" style={{fontFamily: "'Short Stack', cursive"}}>
+            <h3 className="text-xl font-bold hover:text-green-600 transition-colors">
               {product.name} 💄
             </h3>
             <div className="flex items-center text-green-500">

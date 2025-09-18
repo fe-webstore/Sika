@@ -12,7 +12,7 @@ const ProductsSection = ({ featuredProducts, onAddToCart }: ProductsSectionProps
   return (
     <section id="products" className="mb-20">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold mb-2" style={{fontFamily: "'Short Stack', cursive"}}>
+        <h2 className="text-3xl font-bold mb-2">
           Notre Collection ✨
         </h2>
         <p className="text-gray-600">Découvrez nos produits de beauté naturels pour sublimer votre féminité</p>

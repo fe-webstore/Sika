@@ -91,7 +91,7 @@ const Cart = () => {
               <span className="sm:hidden">Retour</span>
             </Button>
           </Link>
-          <h1 className="text-xl md:text-3xl font-bold text-glass-700" style={{fontFamily: "'Short Stack', cursive"}}>
+          <h1 className="text-xl md:text-3xl font-bold text-glass-700">
             Mon Panier 🛒
           </h1>
         </div>
@@ -130,7 +130,7 @@ const Cart = () => {
                           className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-xl"
                         />
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-bold text-sm md:text-lg text-glass-700 truncate" style={{fontFamily: "'Short Stack', cursive"}}>
+                          <h4 className="font-bold text-sm md:text-lg text-glass-700 truncate">
                             {item.name}
                           </h4>
                           <p className="text-glass-600 font-semibold text-sm md:text-lg">
@@ -250,6 +250,40 @@ const Cart = () => {
                       <div className="flex items-center gap-2 text-sm text-purple-600">
                         <Palette className="w-4 h-4" />
                         <span>Idées d'ensemble selon votre style</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Offre de Fidélité */}
+            <Card className="border-yellow-200 shadow-lg bg-gradient-to-r from-yellow-50 via-orange-50 to-red-50 rounded-2xl">
+              <CardContent className="p-4 md:p-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-yellow-100 p-3 rounded-full">
+                    <Sparkles className="w-6 h-6 text-yellow-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-yellow-800 mb-2 flex items-center gap-2">
+                      <span className="text-2xl">✨</span>
+                      Offre Fidélité Exclusive
+                    </h3>
+                    <p className="text-yellow-700 mb-3 text-sm md:text-base">
+                      Après votre 3ᵉ commande, vous débloquez un avantage exclusif : chaque semaine, nous mettons en avant 2 produits 100% gratuits rien que pour nos clients fidèles ! À partir de votre 4ᵉ commande, vous pouvez ajouter à votre panier l'un des produits gratuits de la semaine, sans rien payer de plus. Et comme la sélection change chaque semaine, il y a toujours une nouvelle surprise à découvrir totalement gratuit.
+                    </p>
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2 text-sm text-yellow-600">
+                        <CheckCircle className="w-4 h-4" />
+                        <span>2 produits gratuits chaque semaine</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-yellow-600">
+                        <CheckCircle className="w-4 h-4" />
+                        <span>Sélection qui change chaque semaine</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-yellow-600">
+                        <CheckCircle className="w-4 h-4" />
+                        <span>Réservé aux clients fidèles uniquement</span>
                       </div>
                     </div>
                   </div>

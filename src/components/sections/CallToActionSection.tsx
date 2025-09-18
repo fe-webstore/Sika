@@ -12,7 +12,7 @@ const CallToActionSection = () => {
     <section className="gradient-bg rounded-3xl p-8 md:p-12 text-center relative overflow-hidden mb-20">
       <div className="absolute top-0 right-0 w-full h-full cute-dots"></div>
       <div className="relative z-10">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{fontFamily: "'Short Stack', cursive"}}>
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">
           Prête à Commencer Votre <span className="cute-underline">Aventure Beauté?</span> 🚀
         </h2>
         <p className="text-xl mb-8 max-w-2xl mx-auto">

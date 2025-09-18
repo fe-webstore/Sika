@@ -92,7 +92,7 @@
   }
 
   body {
-    font-family: 'Comic Neue', cursive;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
     /* Softer, higher-contrast neutral background for readability */
     background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
     color: #1f2937; /* slate-800 */
