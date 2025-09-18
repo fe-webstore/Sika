@@ -286,6 +286,9 @@
 
   /* Mobile Optimizations */
   @media (max-width: 767px) {
+    html {
+      font-size: 17px; /* slightly larger text on phones for readability */
+    }
     .cute-card {
       border-radius: 16px !important;
     }
