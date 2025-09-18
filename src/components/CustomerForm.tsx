@@ -17,9 +17,17 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>("idle");
-  const [priorityPosition, setPriorityPosition] = useState<number | null>(null);
+  const [priorityClass, setPriorityClass] = useState<number | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const navigate = useNavigate();
+
+  const computePriorityClass = (d: Date) => {
+    // Deterministic pseudo-random class (1..6) based on minute of the day
+    const minuteOfDay = d.getHours() * 60 + d.getMinutes();
+    const x = Math.sin(minuteOfDay + d.getDate()) * 10000; // small daily variation
+    const frac = x - Math.floor(x);
+    return Math.max(1, Math.min(6, Math.floor(frac * 6) + 1));
+  };
 
   const GOOGLE_SHEETS_WEBAPP_URL = (import.meta as any)?.env?.VITE_GOOGLE_SHEETS_WEBAPP_URL || "https://script.google.com/macros/s/AKfycbzPtbBeHVTIfNWgK1tiTEiq1cPY6_sPfc2JyLed1tpYAChBXjiymO29teHp1q0DLos/exec";
 
@@ -88,7 +96,7 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
       // In no-cors mode, response is opaque; treat as success if no network error occurred
       setStatus('success');
 
-      // Persist order locally for the admin page and compute priority position
+      // Persist order locally for the admin page
       try {
         const existing = JSON.parse(localStorage.getItem('sikaOrders') || '[]');
         const newOrder = {
@@ -101,8 +109,10 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
           timestamp: new Date().toISOString(),
         };
         localStorage.setItem('sikaOrders', JSON.stringify([newOrder, ...existing]));
-        setPriorityPosition((existing?.length || 0) + 1);
       } catch {}
+
+      // Determine user's priority class between 1 and 6 based on current minute
+      setPriorityClass(computePriorityClass(new Date()));
 
       // Open success modal (user will confirm to continue)
       setShowSuccessModal(true);
@@ -185,10 +195,9 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
               </h3>
               <div className="mt-3 text-slate-700 space-y-2">
                 <p>Merci {customerName || ''} ! Votre commande a bien été enregistrée.</p>
-                {priorityPosition !== null && (
+                {priorityClass !== null && (
                   <p>
-                    Vous passez en <span className="font-semibold text-green-700">priorité n° {priorityPosition}</span>.
-                    Nous accélérons votre traitement et vous serez contacté très bientôt.
+                    Vous êtes dans la <span className="font-semibold text-green-700">classe de priorité n° {priorityClass}</span>. Nous accélérons votre traitement et vous serez contacté très bientôt.
                   </p>
                 )}
               </div>
