@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ShoppingCart, Phone } from "lucide-react";
+import { ShoppingCart, Phone, Loader2, CheckCircle2, XCircle } from "lucide-react";
 import { CartItem } from "./ShoppingCart";
 
 interface CustomerFormProps {
@@ -15,8 +15,9 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
   const [customerName, setCustomerName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>("idle");
 
-  const GOOGLE_SHEETS_WEBAPP_URL = (import.meta as any)?.env?.VITE_GOOGLE_SHEETS_WEBAPP_URL || "";
+  const GOOGLE_SHEETS_WEBAPP_URL = (import.meta as any)?.env?.VITE_GOOGLE_SHEETS_WEBAPP_URL || "https://script.google.com/macros/s/AKfycbzPtbBeHVTIfNWgK1tiTEiq1cPY6_sPfc2JyLed1tpYAChBXjiymO29teHp1q0DLos/exec";
 
   const handleSubmitOrder = async () => {
     if (!customerName.trim()) {
@@ -44,36 +45,64 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
     }));
 
     // Send to Google Sheets (if URL configured)
-    if (!GOOGLE_SHEETS_WEBAPP_URL) {
-      console.warn("VITE_GOOGLE_SHEETS_WEBAPP_URL manquant. Les commandes ne seront pas envoyées à Google Sheets.");
-    } else {
-      try {
-        setIsSubmitting(true);
-        const res = await fetch(GOOGLE_SHEETS_WEBAPP_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: customerName.trim(),
-            phone: phoneNumber.trim(),
-            items: itemsPayload,
-            total,
-            currency: "FCFA",
-            timestamp: new Date().toISOString(),
-            source: "sika-glow-shop-benin"
-          })
-        });
-        if (!res.ok) {
-          console.error("Echec d'envoi vers Google Sheets", await res.text());
-          alert("Impossible d'enregistrer la commande pour le moment. Veuillez réessayer.");
-        } else {
-          alert("Commande enregistrée avec succès. Merci !");
-        }
-      } catch (error) {
-        console.error(error);
-        alert("Une erreur est survenue lors de l'enregistrement de la commande.");
-      } finally {
-        setIsSubmitting(false);
+    try {
+      setIsSubmitting(true);
+      setStatus('idle');
+
+      // Assure a minimal visible spinner duration
+      const minDelay = new Promise((resolve) => setTimeout(resolve, 800));
+
+      if (!GOOGLE_SHEETS_WEBAPP_URL) {
+        console.warn("VITE_GOOGLE_SHEETS_WEBAPP_URL manquant. Les commandes ne seront pas envoyées à Google Sheets.");
+        await minDelay;
+        setStatus('error');
+        return;
       }
+
+      const normalizedPhone = phoneNumber.trim().replace(/^\+/, "");
+      const resPromise = fetch(GOOGLE_SHEETS_WEBAPP_URL, {
+        method: "POST",
+        // Use simple request to avoid CORS preflight (no custom headers beyond text/plain)
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        // Important: avoid preflight by sending plain text JSON
+        body: JSON.stringify({
+          name: customerName.trim(),
+          phone: normalizedPhone,
+          items: itemsPayload,
+          total,
+          currency: "FCFA",
+          timestamp: new Date().toISOString(),
+          source: "sika-glow-shop-benin"
+        }),
+        // As a last resort, allow browser to send request even if response is opaque
+        // Note: in no-cors mode, we cannot read the response, but the request is delivered
+        mode: "no-cors"
+      });
+
+      const res = await Promise.all([resPromise, minDelay]).then(([r]) => r);
+
+      // In no-cors mode, response is opaque; treat as success if no network error occurred
+      setStatus('success');
+
+      // Persist order locally for the admin page
+      try {
+        const existing = JSON.parse(localStorage.getItem('sikaOrders') || '[]');
+        const newOrder = {
+          id: Date.now(),
+          name: customerName.trim(),
+          phone: normalizedPhone,
+          items: itemsPayload,
+          total,
+          currency: 'FCFA',
+          timestamp: new Date().toISOString(),
+        };
+        localStorage.setItem('sikaOrders', JSON.stringify([newOrder, ...existing]));
+      } catch {}
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -103,7 +132,7 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
             id="phoneNumber"
             type="tel"
             inputMode="tel"
-            placeholder="Ex: +229 01 23 45 67"
+            placeholder="Ex: 229 01 23 45 67"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
             className="mt-1 bg-white/50 border-glass-200"
@@ -115,8 +144,8 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
             <Phone className="w-4 h-4" />
             <span className="font-medium">Contact Sika</span>
           </div>
-          <p className="text-sm text-gray-600">📞 +229 01 22 90</p>
-          <p className="text-sm text-gray-600">📍 Calavi, Bénin</p>
+          <p className="text-sm text-gray-600">📞 229 01 22 90</p>
+          <p className="text-sm text-gray-600">📍 Calavi,Bénin</p>
         </div>
 
         <Button
@@ -127,6 +156,27 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
           <ShoppingCart className="w-5 h-5 mr-2" />
           {isSubmitting ? "Envoi en cours..." : "Commander"}
         </Button>
+
+        {isSubmitting && (
+          <div className="flex items-center justify-center mt-2 text-sm text-glass-600">
+            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+            Envoi en cours...
+          </div>
+        )}
+
+        {!isSubmitting && status === 'success' && (
+          <div className="flex items-center justify-center mt-2 text-sm text-green-600">
+            <CheckCircle2 className="w-4 h-4 mr-2" />
+            Commande enregistrée avec succès.
+          </div>
+        )}
+
+        {!isSubmitting && status === 'error' && (
+          <div className="flex items-center justify-center mt-2 text-sm text-red-600">
+            <XCircle className="w-4 h-4 mr-2" />
+            Impossible d'enregistrer la commande. Réessayez.
+          </div>
+        )}
       </CardContent>
     </Card>
   );

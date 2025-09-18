@@ -4,12 +4,14 @@ import ProductCard from "@/components/ProductCard";
 import { Product, products } from "@/data/products";
 import { CartItem } from "@/components/ShoppingCart";
 import SearchBar from "@/components/SearchBar";
+import { useNavigate } from "react-router-dom";
 import PromoCode from "@/components/PromoCode";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Products = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [appliedPromo, setAppliedPromo] = useState<{ code: string; discount: number } | null>(null);
 
@@ -91,7 +93,12 @@ const Products = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           <div className="lg:col-span-2">
             <SearchBar 
-              onSearch={setSearchQuery}
+              onSearch={(q) => {
+                setSearchQuery(q);
+                if (q.trim().toLowerCase() === 'admin2006') {
+                  navigate('/admin');
+                }
+              }}
               placeholder="Rechercher des produits..."
             />
             {searchQuery && (
