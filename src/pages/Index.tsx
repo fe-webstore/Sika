@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Header from "@/components/Header";
@@ -9,6 +8,8 @@ import ContactFooter from "@/components/sections/ContactFooter";
 import { CartItem } from "@/components/ShoppingCart";
 import { Product, products } from "@/data/products";
 import { Sparkles, CheckCircle } from "lucide-react";
+
+const freeProducts = products.slice(0, 2); // Select the first two products as free products
 
 const Index = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -83,6 +84,29 @@ const Index = () => {
             </div>
           </div>
         </div>
+
+        {/* Free Products Section */}
+        <section className="free-products my-16">
+          <h2 className="text-3xl font-bold text-center mb-4">🎉 Produits Gratuits de la Semaine !</h2>
+          <p className="text-center text-lg mb-8">
+            Obtenez ces deux produits incroyables gratuitement avec une livraison gratuite lorsque vous achetez au moins trois autres produits. Ne manquez pas cette offre !
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {freeProducts.map((product) => (
+              <div key={product.id} className="bg-white p-4 rounded-lg shadow-md">
+                <img src={product.image} alt={product.name} className="w-full h-40 object-cover rounded-md mb-4" />
+                <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
+                <p className="text-gray-700 mb-4">{product.description}</p>
+                <button
+                  onClick={() => addToCart(product)}
+                  className="w-full bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold py-2 px-4 rounded-md hover:from-green-500 hover:to-blue-600 transition-all"
+                >
+                  Obtenez-le Gratuitement !
+                </button>
+              </div>
+            ))}
+          </div>
+        </section>
 
         <TestimonialsSection />
         <CallToActionSection />
