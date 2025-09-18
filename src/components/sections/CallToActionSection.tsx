@@ -4,7 +4,7 @@ import VideoModal from "@/components/VideoModal";
 
 const CallToActionSection = () => {
   const handleJoinWhatsApp = () => {
-    const whatsappGroupLink = "https://chat.whatsapp.com/22991022734";
+    const whatsappGroupLink = "https://wa.me/22991022734";
     window.open(whatsappGroupLink, '_blank');
   };
 
