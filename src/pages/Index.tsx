@@ -91,7 +91,7 @@ const Index = () => {
           <p className="text-center text-lg mb-8">
             Obtenez ces deux produits incroyables gratuitement avec une livraison gratuite lorsque vous achetez au moins trois autres produits. Ne manquez pas cette offre !
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4">
             {freeProducts.map((product) => (
               <div key={product.id} className="bg-white p-4 rounded-lg shadow-md">
                 <img src={product.image} alt={product.name} className="w-full h-40 object-cover rounded-md mb-4" />

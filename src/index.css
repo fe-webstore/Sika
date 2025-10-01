@@ -93,8 +93,10 @@
 
   body {
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-    /* Softer, higher-contrast neutral background for readability */
-    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
+    /* iOS glass pink background */
+    background: radial-gradient(1200px 600px at 20% -10%, #ffe4ef 0%, transparent 60%),
+                radial-gradient(1000px 600px at 100% 10%, #fbe7ff 0%, transparent 60%),
+                linear-gradient(180deg, #ffffff, #fafafa);
     color: #1f2937; /* slate-800 */
   }
 }
@@ -360,6 +362,20 @@
     .cute-card {
       border-radius: 16px !important;
     }
+    /* Mobile hero spacing */
+    .hero-mobile {
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
+    }
+    .hero-title {
+      font-size: 2rem; /* ~32px */
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+    .hero-subtitle { text-align: center; }
+    .hero-cta-stack { flex-direction: column; }
+    .hero-cta-stack > * { width: 100%; }
     
     .recipe-image {
       height: 120px;
@@ -404,6 +420,7 @@
       min-height: 44px;
       min-width: 44px;
     }
+    .pink-btn { width: 100%; }
 
     /* Améliorer la lisibilité sur petit écran */
     .text-xs {
@@ -432,5 +449,70 @@
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(236, 72, 153, 0.12); /* pink-500 */
+  }
+
+  /* iOS 16/17/18 glass-like surfaces */
+  .glass-ios {
+    background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.35));
+    backdrop-filter: saturate(140%) blur(16px);
+    -webkit-backdrop-filter: saturate(140%) blur(16px);
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    border-radius: 24px;
+  }
+  .glass-ios-tint {
+    background: linear-gradient(180deg, rgba(255, 230, 243, 0.6), rgba(254, 242, 255, 0.45));
+    border: 1px solid rgba(236, 72, 153, 0.12);
+  }
+  .smooth { transition: all 300ms ease; }
+
+  /* Product card styles (mobile-first, app-like) */
+  .product-hero {
+    position: relative;
+    background: linear-gradient(135deg, #fde1ef 0%, #f9c5e7 40%, #f3e7ff 100%);
+    border-radius: 20px;
+    overflow: hidden;
+    height: 160px;
+    display: grid;
+    place-items: center;
+  }
+  .product-hero img { width: 100%; height: 100%; object-fit: cover; }
+  .product-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255,255,255,0.9);
+    color: #0f172a; /* slate-900 */
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 6px 10px;
+    border-radius: 9999px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  }
+  .favorite-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    background: rgba(255,255,255,0.9);
+    border-radius: 9999px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  }
+  .price-pill {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #0f172a; /* slate-900 */
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  @media (min-width: 768px) {
+    .product-hero { height: 200px; }
   }
 }

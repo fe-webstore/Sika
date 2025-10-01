@@ -11,7 +11,7 @@ interface NavigationProps {
 
 const Navigation = ({ cartItemCount }: NavigationProps) => {
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
+    <nav className="glass-ios glass-ios-tint sticky top-2 z-50 mx-2 md:mx-0 smooth">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -37,7 +37,7 @@ const Navigation = ({ cartItemCount }: NavigationProps) => {
           {/* Desktop Cart Button */}
           <div className="hidden md:flex items-center">
             <Link to="/cart">
-              <Button className="pink-btn relative">
+              <Button className="pink-btn relative" data-haptic>
                 <ShoppingCart className="w-5 h-5 mr-2" />
                 <span className="hidden sm:inline">Panier</span>
                 {cartItemCount > 0 && (

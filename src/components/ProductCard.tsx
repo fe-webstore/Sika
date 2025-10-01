@@ -29,44 +29,28 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
 
   return (
     <Link to={`/product/${product.id}`} className="block h-full">
-      <div className="cute-card h-full flex flex-col hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="recipe-image"
-        />
+      <div className="cute-card glass-ios h-full flex flex-col hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer smooth">
+        <div className="product-hero">
+          <img src={product.image} alt={product.name} />
+        </div>
         <div className="p-6 flex-grow">
           <div className="flex justify-between items-start mb-3">
             <h3 className="text-xl font-bold hover:text-slate-900 transition-colors">
               {product.name} 💄
             </h3>
-            <div className="flex items-center text-slate-900">
-              <Star className="w-4 h-4 fill-current" />
-              <span className="ml-1 text-gray-700">4.8</span>
-            </div>
+            <div />
           </div>
 
-          <p className="text-gray-700 mb-4 line-clamp-3">
+          <p className="text-gray-700 mb-4 line-clamp-2">
             {product.description}
           </p>
-
-          <div className="flex flex-wrap gap-2 mb-4">
-            <span className="cute-tag">
-              <Leaf className="w-3 h-3 mr-1" /> Naturel
-            </span>
-            <span className="cute-tag">
-              <Heart className="w-3 h-3 mr-1" /> Longue tenue
-            </span>
-            <span className="cute-tag">
-              <Clock className="w-3 h-3 mr-1" /> {product.price.toFixed(0)} FCFA
-            </span>
-          </div>
 
         </div>
         <div className="px-6 pb-4">
           <button
             onClick={handleAddToCart}
-            className="w-full pink-btn py-2 flex items-center justify-center hover:bg-pink-600 transition-colors"
+            className="w-full pink-btn py-3 flex items-center justify-center hover:bg-pink-600 transition-colors smooth"
+            data-haptic
           >
             <ShoppingCart className="w-4 h-4 mr-2" /> Ajouter au Panier
           </button>

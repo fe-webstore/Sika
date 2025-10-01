@@ -40,7 +40,7 @@ const MobileMenu = ({ cartItemCount }: MobileMenuProps) => {
           />
           
           {/* Menu Content */}
-          <div className="fixed top-0 right-0 h-full w-80 bg-white shadow-lg transform transition-transform duration-300 ease-in-out">
+          <div className="fixed top-0 right-0 h-full w-80 glass-ios glass-ios-tint shadow-lg transform transition-transform duration-300 ease-in-out smooth">
             <div className="flex items-center justify-between p-4 border-b">
               <h2 className="text-xl font-bold text-slate-900">
                 Menu
@@ -112,7 +112,7 @@ const MobileMenu = ({ cartItemCount }: MobileMenuProps) => {
                   rel="noopener noreferrer"
                   onClick={closeMenu}
                 >
-                  <button className="w-full bg-slate-900 text-white py-3 rounded-lg text-lg font-bold hover:bg-black transition-colors">
+                  <button className="w-full bg-slate-900 text-white py-3 rounded-lg text-lg font-bold hover:bg-black transition-colors smooth" data-haptic>
                     WhatsApp
                   </button>
                 </a>

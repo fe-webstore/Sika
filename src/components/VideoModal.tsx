@@ -9,7 +9,7 @@ const VideoModal = () => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className="bg-white text-slate-900 border-2 border-slate-300 px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-100 transition-all inline-flex items-center justify-center">
+        <Button className="bg-white text-slate-900 border-2 border-slate-300 px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-100 transition-all inline-flex items-center justify-center smooth" data-haptic>
           <Play className="w-5 h-5 mr-2" /> Voir la Vidéo
         </Button>
       </DialogTrigger>
