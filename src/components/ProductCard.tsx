@@ -49,10 +49,11 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
         <div className="px-6 pb-4">
           <button
             onClick={handleAddToCart}
-            className="w-full pink-btn py-3 flex items-center justify-center hover:bg-pink-600 transition-colors smooth"
+            className="w-full btn-add smooth"
             data-haptic
           >
-            <ShoppingCart className="w-4 h-4 mr-2" /> Ajouter au Panier
+            <ShoppingCart className="w-4 h-4" />
+            Add
           </button>
         </div>
       </div>

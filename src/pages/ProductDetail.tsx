@@ -133,11 +133,11 @@ const ProductDetail = () => {
               
               <Button
                 onClick={() => addToCart(product, quantity)}
-                className="pink-btn px-8 py-3 flex-1 text-lg"
-                style={{ backgroundColor: '#17150f' }}
+                className="btn-add px-8 py-3 flex-1 text-lg smooth"
+                data-haptic
               >
                 <ShoppingCart className="w-5 h-5 mr-2" />
-                Ajouter au Panier
+                Add
               </Button>
             </div>
 
