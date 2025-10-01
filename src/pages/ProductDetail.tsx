@@ -67,9 +67,9 @@ const ProductDetail = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <div className="flex items-center mb-8">
-          <Link to="/" className="text-green-600 hover:underline">Accueil</Link>
+          <Link to="/" className="text-slate-900 hover:underline">Accueil</Link>
           <span className="mx-2 text-gray-400">/</span>
-          <Link to="/products" className="text-green-600 hover:underline">Produits</Link>
+          <Link to="/products" className="text-slate-900 hover:underline">Produits</Link>
           <span className="mx-2 text-gray-400">/</span>
           <span className="text-gray-600">{product.name}</span>
         </div>
@@ -89,13 +89,13 @@ const ProductDetail = () => {
           {/* Product Info */}
           <div className="space-y-6">
             <div>
-              <Badge className="mb-4 bg-green-100 text-green-800">{product.category}</Badge>
+              <Badge className="mb-4 bg-gray-100 text-gray-800">{product.category}</Badge>
               <h1 className="text-3xl font-bold mb-4">
                 {product.name} 💄
               </h1>
               
               <div className="flex items-center mb-4">
-                <div className="flex text-green-500 mr-2">
+                <div className="flex text-slate-900 mr-2">
                   {[1,2,3,4,5].map(i => (
                     <Star key={i} className="w-5 h-5 fill-current" />
                   ))}
@@ -103,7 +103,7 @@ const ProductDetail = () => {
                 <span className="text-gray-600">(4.8/5 - 124 avis)</span>
               </div>
 
-              <div className="text-3xl font-bold text-green-600 mb-6">
+              <div className="text-3xl font-bold text-slate-900 mb-6">
                 {product.price.toFixed(0)} FCFA
               </div>
             </div>
@@ -115,17 +115,17 @@ const ProductDetail = () => {
 
             {/* Bouton Ajouter au Panier - Directement sous la description */}
             <div ref={addToCartButtonRef} className="flex items-center gap-4">
-              <div className="flex items-center border-2 border-green-300 rounded-full">
+              <div className="flex items-center border-2 border-slate-300 rounded-full">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-4 py-2 hover:bg-green-50 rounded-l-full"
+                  className="px-4 py-2 hover:bg-gray-100 rounded-l-full"
                 >
                   -
                 </button>
                 <span className="px-4 py-2 font-semibold">{quantity}</span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="px-4 py-2 hover:bg-green-50 rounded-r-full"
+                  className="px-4 py-2 hover:bg-gray-100 rounded-r-full"
                 >
                   +
                 </button>

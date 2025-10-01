@@ -46,13 +46,13 @@ const TestimonialsSection = () => {
               <img
                 src={testimonial.avatar}
                 alt="User"
-                className="w-12 h-12 rounded-full border-2 border-green-300 mr-4"
+                className="w-12 h-12 rounded-full border-2 border-slate-300 mr-4"
               />
               <div>
                 <h4 className="font-bold">{testimonial.author}</h4>
                 <p className="text-sm text-gray-600">{testimonial.role}</p>
               </div>
-              <div className="ml-auto text-green-400 text-2xl">
+              <div className="ml-auto text-slate-900 text-2xl">
                 <Heart className="w-6 h-6 fill-current" />
               </div>
             </div>

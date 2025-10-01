@@ -187,8 +187,8 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
           <div className="fixed inset-0 z-50 flex items-center justify-center">
             <div className="absolute inset-0 bg-black/50" />
             <div className="relative mx-4 max-w-md w-full bg-white rounded-2xl shadow-xl p-6 text-center">
-              <div className="mx-auto mb-3 grid place-items-center w-12 h-12 rounded-full bg-green-100">
-                <CheckCircle2 className="w-7 h-7 text-green-600" />
+              <div className="mx-auto mb-3 grid place-items-center w-12 h-12 rounded-full bg-slate-100">
+                <CheckCircle2 className="w-7 h-7 text-slate-900" />
               </div>
               <h3 className="text-xl font-bold text-slate-900">
                 Commande confirmée
@@ -197,7 +197,7 @@ const CustomerForm = ({ cartItems }: CustomerFormProps) => {
                 <p>Merci {customerName || ''} ! Votre commande a bien été enregistrée.</p>
                 {priorityClass !== null && (
                   <p>
-                    Vous êtes dans la <span className="font-semibold text-green-700">classe de priorité n° {priorityClass}</span>. Nous accélérons votre traitement et vous serez contacté très bientôt.
+                    Vous êtes dans la <span className="font-semibold text-slate-900">classe de priorité n° {priorityClass}</span>. Nous accélérons votre traitement et vous serez contacté très bientôt.
                   </p>
                 )}
               </div>

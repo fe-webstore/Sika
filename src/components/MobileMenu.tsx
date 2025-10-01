@@ -42,7 +42,7 @@ const MobileMenu = ({ cartItemCount }: MobileMenuProps) => {
           {/* Menu Content */}
           <div className="fixed top-0 right-0 h-full w-80 bg-white shadow-lg transform transition-transform duration-300 ease-in-out">
             <div className="flex items-center justify-between p-4 border-b">
-              <h2 className="text-xl font-bold text-green-600">
+              <h2 className="text-xl font-bold text-slate-900">
                 Menu
               </h2>
               <Button variant="ghost" onClick={closeMenu}>
@@ -55,30 +55,30 @@ const MobileMenu = ({ cartItemCount }: MobileMenuProps) => {
                 <li>
                   <Link
                     to="/"
-                    className="flex items-center py-3 px-4 rounded-lg hover:bg-green-50 transition-colors"
+                    className="flex items-center py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors"
                     onClick={closeMenu}
                   >
-                    <Home className="w-5 h-5 mr-3 text-green-600" />
+                    <Home className="w-5 h-5 mr-3 text-slate-900" />
                     <span className="text-lg">Accueil</span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     to="/products"
-                    className="flex items-center py-3 px-4 rounded-lg hover:bg-green-50 transition-colors"
+                    className="flex items-center py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors"
                     onClick={closeMenu}
                   >
-                    <ShoppingBag className="w-5 h-5 mr-3 text-green-600" />
+                    <ShoppingBag className="w-5 h-5 mr-3 text-slate-900" />
                     <span className="text-lg">Produits</span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     to="/cart"
-                    className="flex items-center py-3 px-4 rounded-lg hover:bg-green-50 transition-colors relative"
+                    className="flex items-center py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors relative"
                     onClick={closeMenu}
                   >
-                    <ShoppingCart className="w-5 h-5 mr-3 text-green-600" />
+                    <ShoppingCart className="w-5 h-5 mr-3 text-slate-900" />
                     <span className="text-lg">Panier</span>
                     {cartItemCount > 0 && (
                       <span className="absolute right-4 bg-slate-900 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">
@@ -90,10 +90,10 @@ const MobileMenu = ({ cartItemCount }: MobileMenuProps) => {
                 <li>
                   <a
                     href="#contact"
-                    className="flex items-center py-3 px-4 rounded-lg hover:bg-green-50 transition-colors"
+                    className="flex items-center py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors"
                     onClick={closeMenu}
                   >
-                    <Phone className="w-5 h-5 mr-3 text-green-600" />
+                    <Phone className="w-5 h-5 mr-3 text-slate-900" />
                     <span className="text-lg">Contact</span>
                   </a>
                 </li>
@@ -112,7 +112,7 @@ const MobileMenu = ({ cartItemCount }: MobileMenuProps) => {
                   rel="noopener noreferrer"
                   onClick={closeMenu}
                 >
-                  <button className="w-full bg-green-500 text-white py-3 rounded-lg text-lg font-bold hover:bg-green-600 transition-colors">
+                  <button className="w-full bg-slate-900 text-white py-3 rounded-lg text-lg font-bold hover:bg-black transition-colors">
                     WhatsApp
                   </button>
                 </a>

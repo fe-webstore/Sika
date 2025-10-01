@@ -68,11 +68,11 @@ const PromoCode = ({ onApplyPromo, appliedPromo, onRemovePromo }: PromoCodeProps
       <CardContent>
         {appliedPromo ? (
           <div className="space-y-3">
-            <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg border-2 border-green-200">
+            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border-2 border-gray-200">
               <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-green-600" />
-                <span className="font-medium text-green-800">{appliedPromo.code}</span>
-                <Badge className="bg-green-100 text-green-800">
+                <Check className="w-4 h-4 text-slate-900" />
+                <span className="font-medium text-gray-800">{appliedPromo.code}</span>
+                <Badge className="bg-gray-100 text-gray-800">
                   -{appliedPromo.discount}%
                 </Badge>
               </div>
@@ -80,7 +80,7 @@ const PromoCode = ({ onApplyPromo, appliedPromo, onRemovePromo }: PromoCodeProps
                 variant="ghost"
                 size="sm"
                 onClick={onRemovePromo}
-                className="text-green-600 hover:text-green-800"
+                className="text-slate-900 hover:text-black"
               >
                 <X className="w-4 h-4" />
               </Button>

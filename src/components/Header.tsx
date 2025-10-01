@@ -8,7 +8,7 @@ const Header = () => {
       <div className="relative z-10 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-8 md:mb-0">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Découvrez la <span className="text-green-600">Beauté Naturelle</span> avec Soft beauty! 🌸
+            Découvrez la <span className="text-slate-900">Beauté Naturelle</span> avec Soft beauty! 🌸
           </h2>
           <p className="text-xl mb-6 text-gray-700">
             Explorez notre gamme de produits de beauté naturels conçus pour sublimer votre routine beauté. Parfait pour tous les types de peau et tous les besoins!
@@ -17,16 +17,20 @@ const Header = () => {
             <a href="#products" className="pink-btn px-6 py-3 text-lg wobble inline-flex items-center justify-center">
               <Sparkles className="w-4 h-4 mr-2" /> Explorer les Produits
             </a>
-            <a href="#contact" className="bg-white text-green-600 border-2 border-green-300 px-6 py-3 rounded-full text-lg hover:bg-green-50 transition-all inline-flex items-center justify-center">
+            <a href="#contact" className="bg-white text-slate-900 border-2 border-slate-300 px-6 py-3 rounded-full text-lg hover:bg-gray-100 transition-all inline-flex items-center justify-center">
               <Leaf className="w-4 h-4 mr-2" /> Comment ça Marche
             </a>
           </div>
         </div>
-        <div className="md:w-1/2 flex justify-center">
+        <div className="md:w-1/2 flex justify-center hero-stage">
+          {/* Decorative 3D shapes */}
+          <div className="hero-blob" style={{ top: '10%', left: '5%' }} />
+          <div className="hero-blob alt" style={{ bottom: '8%', right: '0%' }} />
+          <div className="hero-ring" style={{ top: '40%', left: '-6%' }} />
           <img 
-            src="https://i.pinimg.com/736x/18/84/a5/1884a51e20a214c5ed25b2da10e7f7f8.jpg"
+            src="https://i.postimg.cc/cLJVDDNx/14f033ca25e1e6e585b346c8851997a8-removebg-preview.png"
             alt="Produits de beauté naturels"
-            className="rounded-3xl shadow-xl w-full max-w-md h-64 md:h-80 object-cover border-4 border-white bounce"
+            className="w-full max-w-2xl h-96 md:h-[32rem] object-contain hero-3d relative z-10"
           />
         </div>
       </div>

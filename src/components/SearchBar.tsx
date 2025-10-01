@@ -31,7 +31,7 @@ const SearchBar = ({ onSearch, placeholder = "Rechercher des produits..." }: Sea
           placeholder={placeholder}
           value={searchQuery}
           onChange={(e) => handleSearch(e.target.value)}
-          className="pl-10 pr-10 border-2 border-green-200 focus:border-green-400 rounded-full"
+          className="pl-10 pr-10 border-2 border-slate-300 focus:border-slate-400 rounded-full"
         />
         {searchQuery && (
           <Button

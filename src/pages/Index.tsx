@@ -99,7 +99,7 @@ const Index = () => {
                 <p className="text-gray-700 mb-4">{product.description}</p>
                 <button
                   onClick={() => addToCart(product)}
-                  className="w-full bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold py-2 px-4 rounded-md hover:from-green-500 hover:to-blue-600 transition-all"
+                  className="w-full bg-black text-white font-bold py-2 px-4 rounded-md hover:bg-slate-900 transition-all"
                 >
                   Obtenez-le Gratuitement !
                 </button>
